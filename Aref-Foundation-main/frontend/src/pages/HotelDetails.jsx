@@ -9,6 +9,10 @@ const hotelData = {
         description: 'A masterclass in architectural elegance, blending seamlessly with the rugged coastline to provide an unparalleled sense of peace and privacy.',
         conceptSubtitle: 'An uncompromising vision of modern sanctuary and refined luxury.',
         conceptDescription: 'The Royal Residence is designed as a peaceful retreat from the modern world. Nestled on the water\'s edge, it harmonizes organic textures, warm ambient lighting, and elegant architectural design. Guests can enjoy sweeping views of the shoreline, stroll through beautifully manicured gardens, or relax in curated luxury lounges. Every room and suite is meticulously crafted to be a private haven of comfort and style.',
+        contact: {
+            email: 'hotel@royalmaadi.com',
+            phones: ['0223587276', '0223781222']
+        },
         categorizedGallery: {
             rooms: [
                 '/royal-gallery-1.jpeg',
@@ -242,6 +246,31 @@ const HotelDetails = () => {
                     <p className="text-sm sm:text-lg md:text-xl text-zinc-200 max-w-2xl mx-auto font-light leading-relaxed">
                         {data.description}
                     </p>
+                    {data.contact && (
+                        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                            <a
+                                href={`mailto:${data.contact.email}`}
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-black/60 backdrop-blur-md border border-brand-gold/50 hover:border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black transition-all duration-300 rounded-full text-xs font-medium tracking-widest uppercase shadow-xl hover:scale-105"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span>{data.contact.email}</span>
+                            </a>
+                            {data.contact.phones.map((phone, idx) => (
+                                <a
+                                    key={idx}
+                                    href={`tel:${phone}`}
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-black/60 backdrop-blur-md border border-white/20 hover:border-brand-gold text-white hover:text-brand-gold transition-all duration-300 rounded-full text-xs font-medium tracking-widest uppercase shadow-xl hover:scale-105"
+                                >
+                                    <svg className="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                    <span>{phone}</span>
+                                </a>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="absolute bottom-6 sm:bottom-12 z-10 flex flex-col items-center space-y-2 sm:space-y-4">
@@ -267,6 +296,57 @@ const HotelDetails = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Direct Contact & Reservations Section */}
+            {data.contact && (
+                <section className="py-12 sm:py-20 px-4 sm:px-6 bg-zinc-950/90 border-b border-brand-gold/15 relative overflow-hidden">
+                    <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
+                        <span className="text-brand-gold text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-2 block font-semibold">Direct Reservations & Concierge</span>
+                        <h3 className="text-3xl sm:text-5xl font-serif text-white mb-4">Contact {data.name}</h3>
+                        <p className="text-zinc-300 font-light text-sm sm:text-base max-w-xl mb-8 leading-relaxed">
+                            For private bookings, suite availability, and concierge assistance, reach out directly to our reservations desk.
+                        </p>
+                        <div className="w-16 h-px bg-brand-gold/40 mb-10" />
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+                            {/* Email Card */}
+                            <a
+                                href={`mailto:${data.contact.email}`}
+                                className="group p-6 sm:p-8 rounded-2xl bg-zinc-900/90 border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex flex-col items-center text-center shadow-2xl hover:scale-[1.02]"
+                            >
+                                <div className="w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-4 group-hover:bg-brand-gold group-hover:text-black transition-colors duration-300 shadow-lg">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <span className="text-brand-gold text-[11px] font-serif uppercase tracking-[0.2em] mb-1 font-semibold">Email Inquiries</span>
+                                <span className="text-white font-medium text-base sm:text-lg group-hover:text-brand-gold transition-colors">{data.contact.email}</span>
+                            </a>
+
+                            {/* Phone Lines Card */}
+                            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/90 border border-brand-gold/30 flex flex-col items-center text-center shadow-2xl">
+                                <div className="w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-4 shadow-lg">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <span className="text-brand-gold text-[11px] font-serif uppercase tracking-[0.2em] mb-1 font-semibold">Telephone Lines</span>
+                                <div className="flex flex-col gap-1.5 mt-1">
+                                    {data.contact.phones.map((phone, idx) => (
+                                        <a
+                                            key={idx}
+                                            href={`tel:${phone}`}
+                                            className="text-white font-medium text-base sm:text-lg hover:text-brand-gold transition-colors tracking-wider"
+                                        >
+                                            {phone}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* ELPHISTONE HOTEL AND SUITE APTS Section */}
             {data.extension && (
