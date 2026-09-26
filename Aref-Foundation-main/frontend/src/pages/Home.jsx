@@ -148,7 +148,7 @@ const Home = () => {
   return (
     <>
       {/* Cinematic Hero Section */}
-      <section className="relative min-h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-[#fdfcfb] pt-24 pb-6">
+      <section className="relative min-h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-[#fdfcfb] dark:bg-[#0b0c0d] pt-24 pb-6 transition-colors duration-300">
         <div className="absolute inset-0 z-0 flex items-center justify-center p-4 sm:p-8">
           <img alt="Hero" className="w-full h-full object-contain opacity-100 max-h-[50vh] sm:max-h-[60vh] md:max-h-[65vh]" src="/hero-bg.jpg" />
         </div>
@@ -159,8 +159,8 @@ const Home = () => {
           </Link>
         </div>
         <div className="relative z-10 flex flex-col items-center gap-1 opacity-60 pb-2">
-          <span className="font-label-caps text-[10px] text-primary tracking-widest uppercase">Scroll to Discover</span>
-          <div className="h-6 sm:h-10 w-[0.5px] bg-primary"></div>
+          <span className="font-label-caps text-[10px] text-primary dark:text-brand-gold tracking-widest uppercase">Scroll to Discover</span>
+          <div className="h-6 sm:h-10 w-[0.5px] bg-primary dark:bg-brand-gold"></div>
         </div>
       </section>
 
@@ -170,10 +170,10 @@ const Home = () => {
           <div className="flex flex-col gap-stack-md">
             <span className="font-label-caps text-label-caps text-outline uppercase tracking-widest">Our Philosophy</span>
             <h2 className="font-headline-md text-3xl sm:text-4xl md:text-headline-md text-brand-gold">The Art of Atmosphere.</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">We believe that a truly exceptional meal is about more than just the food on the plate. It is a symphony of sensory experiences—the precise placement of a light, the weight of the cutlery, the hush of a well-appointed room.</p>
-            <p className="font-body-md text-body-md text-on-surface-variant">Every establishment in our curated collection has been meticulously selected to guarantee an environment that elevates the act of dining into an unforgettable event.</p>
+            <p className="font-body-md text-body-md text-on-surface-variant dark:text-zinc-300">We believe that a truly exceptional meal is about more than just the food on the plate. It is a symphony of sensory experiences—the precise placement of a light, the weight of the cutlery, the hush of a well-appointed room.</p>
+            <p className="font-body-md text-body-md text-on-surface-variant dark:text-zinc-300">Every establishment in our curated collection has been meticulously selected to guarantee an environment that elevates the act of dining into an unforgettable event.</p>
             <div className="mt-stack-sm">
-              <Link to="/story" className="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary uppercase tracking-widest border-b-[0.5px] border-primary pb-1">
+              <Link to="/story" className="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary dark:text-brand-gold uppercase tracking-widest border-b-[0.5px] border-primary dark:border-brand-gold pb-1">
                 Read the Story
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </Link>
@@ -181,7 +181,7 @@ const Home = () => {
           </div>
           <div className="relative h-[320px] sm:h-[450px] md:h-[600px] w-full rounded-xl overflow-hidden">
             <img alt="Dining detail" className="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwFmBGovTkVoOpwryJ6m3Bioh-vCHu-RQfrExO1q13twmqZzmC4xg1XqDYnknpy8Nw3sUoyT3ag2SExqggNiDw1KG_uXPiNxIAmU0UyGDzZt5D09QY9pLQw7fHeYPwJISPjleRd2-yvpFiBxgA52vCmAS0fwq_30UXJ9-cldibqURQupm567jEdK_ljMOOpfZG6XTHLkkRx4Ya7dKCs7MqYLCDZe4jrl_blSB0SwwLZbsYHGVXw7AxvdMjWGADAg4CWB1QdteA1pI" />
-            <div className="absolute inset-0 border border-primary/20 scale-[0.95]"></div>
+            <div className="absolute inset-0 border border-primary/20 dark:border-brand-gold/30 scale-[0.95]"></div>
           </div>
         </div>
       </section>

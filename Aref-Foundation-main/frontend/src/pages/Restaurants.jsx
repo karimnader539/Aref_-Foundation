@@ -99,9 +99,9 @@ const Restaurants = () => {
     <div className="pt-20 sm:pt-24 px-4 sm:px-8 md:px-16 lg:px-32 max-w-[1920px] mx-auto pb-16 sm:pb-24 md:pb-section-gap w-full flex flex-col flex-grow">
       {/* Header Section */}
       <header className="mb-8 sm:mb-12 mt-4 sm:mt-8 text-center max-w-4xl mx-auto flex flex-col items-center">
-        <h1 className="font-display-lg text-3xl sm:text-5xl md:text-display-lg text-on-background mb-stack-md">Curated Excellence</h1>
+        <h1 className="font-display-lg text-3xl sm:text-5xl md:text-display-lg text-on-background dark:text-white mb-stack-md">Curated Excellence</h1>
         <div className="w-12 h-[1px] bg-primary mb-stack-md"></div>
-        <p className="font-body-lg text-base sm:text-body-lg text-on-surface-variant max-w-2xl">
+        <p className="font-body-lg text-base sm:text-body-lg text-on-surface-variant dark:text-zinc-300 max-w-2xl">
           Discover our exclusive collection of culinary destinations. Each establishment has been selected for its uncompromising dedication to taste, atmosphere, and service.
         </p>
       </header>
@@ -112,9 +112,9 @@ const Restaurants = () => {
           <Link
             key={est.id}
             to={`/restaurants/${est.id}`}
-            className="col-span-1 group cursor-pointer card-hover-effect flex flex-col p-3 sm:p-4 bg-surface-dim rounded-xl block"
+            className="col-span-1 group cursor-pointer card-hover-effect flex flex-col p-3 sm:p-4 bg-surface-dim dark:bg-zinc-900/90 border border-zinc-200/60 dark:border-zinc-800 rounded-xl block"
           >
-            <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[21/9] mb-3 bg-surface-container-highest rounded-lg">
+            <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[21/9] mb-3 bg-surface-container-highest dark:bg-zinc-800 rounded-lg">
               <img
                 alt={est.name}
                 className={`w-full h-full object-cover image-zoom transition-opacity duration-700 ${est.isComingSoon
@@ -124,14 +124,14 @@ const Restaurants = () => {
                 src={est.image}
               />
               {est.tag && (
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-md px-3 py-1 font-label-caps text-[10px] sm:text-label-caps text-primary border border-primary/30 rounded-sm">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3 py-1 font-label-caps text-[10px] sm:text-label-caps text-primary dark:text-brand-gold border border-primary/30 dark:border-brand-gold/40 rounded-sm">
                   {est.tag}
                 </div>
               )}
               {est.isComingSoon && (
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] flex items-center justify-center transition-all duration-500 group-hover:backdrop-blur-none group-hover:bg-black/25">
-                  <div className="bg-white/90 backdrop-blur-md px-6 py-2.5 shadow-2xl border border-primary/30">
-                    <span className="font-label-caps text-label-caps text-primary tracking-[0.25em] text-xs font-semibold">
+                  <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-6 py-2.5 shadow-2xl border border-primary/30 dark:border-brand-gold/40">
+                    <span className="font-label-caps text-label-caps text-primary dark:text-brand-gold tracking-[0.25em] text-xs font-semibold">
                       COMING SOON
                     </span>
                   </div>
@@ -140,18 +140,18 @@ const Restaurants = () => {
             </div>
             <div className="flex justify-between items-start gap-2">
               <div className="flex flex-col">
-                <span className="font-label-caps text-[10px] text-primary mb-1 uppercase tracking-[0.2em]">
+                <span className="font-label-caps text-[10px] text-primary dark:text-brand-gold mb-1 uppercase tracking-[0.2em]">
                   {est.tagline}
                 </span>
-                <h2 className="font-headline-sm text-xl sm:text-headline-sm text-on-background mb-1 sm:mb-2">
+                <h2 className="font-headline-sm text-xl sm:text-headline-sm text-on-background dark:text-white mb-1 sm:mb-2">
                   {est.name}
                 </h2>
-                <p className="font-body-md text-xs sm:text-[14px] text-on-surface-variant max-w-md line-clamp-2">
+                <p className="font-body-md text-xs sm:text-[14px] text-on-surface-variant dark:text-zinc-400 max-w-md line-clamp-2">
                   {est.description}
                 </p>
               </div>
-              <div className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-outline-variant rounded-full group-hover:border-primary group-hover:bg-primary/10 transition-colors duration-500 shrink-0">
-                <span className="material-symbols-outlined text-primary font-light text-base sm:text-lg">
+              <div className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-outline-variant dark:border-zinc-700 rounded-full group-hover:border-primary dark:group-hover:border-brand-gold group-hover:bg-primary/10 dark:group-hover:bg-brand-gold/10 transition-colors duration-500 shrink-0">
+                <span className="material-symbols-outlined text-primary dark:text-brand-gold font-light text-base sm:text-lg">
                   arrow_forward
                 </span>
               </div>

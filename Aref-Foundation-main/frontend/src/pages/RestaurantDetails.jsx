@@ -330,7 +330,7 @@ const RestaurantDetails = () => {
     }, [id]);
 
     return (
-        <div className="font-sans bg-brand-dark overflow-x-hidden">
+        <div className="font-sans bg-brand-dark dark:bg-[#0b0c0d] text-brand-text dark:text-zinc-100 overflow-x-hidden transition-colors duration-300">
             {/* Header / Hero */}
             <header className="relative min-h-[80vh] md:h-screen w-full flex flex-col items-center justify-center pt-20 md:pt-24 overflow-hidden">
                 <div className="absolute inset-0 w-full h-full border-b border-brand-gold/20">
@@ -372,17 +372,17 @@ const RestaurantDetails = () => {
             </header>
 
             {/* Concept Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark border-b border-brand-gold/10">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] border-b border-brand-gold/10">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 md:gap-16">
                     <div className="md:col-span-3">
                         <span className="text-brand-gold text-xs tracking-[0.2em] uppercase font-medium">Concept</span>
                     </div>
                     <div className="md:col-span-8 md:col-start-5">
-                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-brand-text leading-tight mb-6 sm:mb-12">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white leading-tight mb-6 sm:mb-12">
                             {data.conceptTitle}<br />
                             {data.conceptSubtitle}
                         </h2>
-                        <p className="text-brand-muted leading-relaxed text-base sm:text-lg max-w-3xl font-light">
+                        <p className="text-brand-muted dark:text-zinc-300 leading-relaxed text-base sm:text-lg max-w-3xl font-light">
                             {data.conceptDescription}
                         </p>
                     </div>
@@ -390,7 +390,7 @@ const RestaurantDetails = () => {
             </section>
 
             {/* Gallery/Atmosphere Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark mb-12 sm:mb-16">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 items-center">
                     {data.gallery.map((item, index) => (
                         <div

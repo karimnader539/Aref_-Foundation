@@ -260,17 +260,17 @@ const HotelDetails = () => {
             </header>
 
             {/* Concept Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark border-b border-brand-gold/10">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] border-b border-brand-gold/10">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 md:gap-16">
                     <div className="md:col-span-3">
                         <span className="text-brand-gold text-xs tracking-[0.2em] uppercase font-medium">Concept</span>
                     </div>
                     <div className="md:col-span-8 md:col-start-5">
-                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-brand-text leading-tight mb-6 sm:mb-12">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white leading-tight mb-6 sm:mb-12">
                             {data.conceptTitle}<br />
                             {data.conceptSubtitle}
                         </h2>
-                        <p className="text-brand-muted leading-relaxed text-base sm:text-lg max-w-3xl font-light">
+                        <p className="text-brand-muted dark:text-zinc-300 leading-relaxed text-base sm:text-lg max-w-3xl font-light">
                             {data.conceptDescription}
                         </p>
                     </div>
@@ -426,11 +426,11 @@ const HotelDetails = () => {
             )}
 
             {/* Categorized Gallery Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark mb-12 sm:mb-16 border-t border-brand-gold/10">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16 border-t border-brand-gold/10">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-10 sm:mb-16">
                         <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium block">Curated Photography</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mt-2 mb-4 tracking-tight">Categorized Gallery</h2>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white mt-2 mb-4 tracking-tight">Categorized Gallery</h2>
                         <div className="w-12 h-px bg-brand-gold/50 mx-auto my-4" />
                     </div>
 
@@ -440,9 +440,9 @@ const HotelDetails = () => {
                             <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
                                 <div>
                                     <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 1</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white">Rooms & Suites</h3>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Rooms & Suites</h3>
                                 </div>
-                                <span className="text-xs text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.rooms.length} Photos</span>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.rooms.length} Photos</span>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                 {data.categorizedGallery.rooms.map((item, index) => (
@@ -468,9 +468,9 @@ const HotelDetails = () => {
                             <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
                                 <div>
                                     <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 2</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white">Beach & Coastline</h3>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Beach & Coastline</h3>
                                 </div>
-                                <span className="text-xs text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.beach.length} Photos</span>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.beach.length} Photos</span>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                 {data.categorizedGallery.beach.map((item, index) => (
@@ -496,9 +496,9 @@ const HotelDetails = () => {
                             <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
                                 <div>
                                     <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 3</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white">Pools & Resort Grounds</h3>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Pools & Resort Grounds</h3>
                                 </div>
-                                <span className="text-xs text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.poolsGrounds.length} Photos</span>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.poolsGrounds.length} Photos</span>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                 {data.categorizedGallery.poolsGrounds.map((item, index) => (
@@ -524,9 +524,9 @@ const HotelDetails = () => {
                             <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
                                 <div>
                                     <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 4</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white">Dining & Amenities</h3>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Dining & Amenities</h3>
                                 </div>
-                                <span className="text-xs text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.dining.length} Photos</span>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.dining.length} Photos</span>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                 {data.categorizedGallery.dining.map((item, index) => (

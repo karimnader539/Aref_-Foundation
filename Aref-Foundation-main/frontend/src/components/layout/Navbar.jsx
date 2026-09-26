@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 const searchData = [
   { id: 'tenaya', name: 'TENAYA', tagline: 'The Art of the Riverside Brunch', type: 'Restaurant', category: 'Restaurants', image: '/tenaya.jpg', link: '/restaurants/tenaya', description: 'Nile-side dining destination serving Egyptian, Mediterranean, seafood and sushi.' },
@@ -26,9 +27,10 @@ const Navbar = () => {
   const [query, setQuery] = useState('');
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const activeClass = "text-brand-gold border-b border-brand-gold pb-1 hover:opacity-70 transition-all duration-700 ease-in-out";
-  const inactiveClass = "text-zinc-500 hover:text-brand-gold hover:opacity-70 transition-all duration-700 ease-in-out";
+  const inactiveClass = "text-zinc-600 dark:text-zinc-400 hover:text-brand-gold hover:opacity-70 transition-all duration-700 ease-in-out";
 
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
@@ -65,7 +67,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-40 bg-white/95 backdrop-blur-xl border-b-[0.5px] border-[#C5A059]/40 flex justify-between items-center px-6 md:px-16 py-2.5 md:py-3.5 transition-all duration-300">
+      <header className="fixed top-0 w-full z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-b-[0.5px] border-[#C5A059]/40 dark:border-brand-gold/30 flex justify-between items-center px-6 md:px-16 py-2.5 md:py-3.5 transition-all duration-300">
         <Link to="/" className="text-xl md:text-2xl font-serif tracking-[0.4em] text-brand-gold flex items-center hover:opacity-70 transition-all duration-700 ease-in-out">
           <img alt="A.F Logo" className="h-11 md:h-14 w-auto object-contain drop-shadow-md" src="/logo.png" />
         </Link>
@@ -77,7 +79,20 @@ const Navbar = () => {
           <NavLink to="/story" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Story</NavLink>
         </nav>
 
-        <div className="flex items-center gap-4 md:gap-6 text-brand-gold">
+        <div className="flex items-center gap-3 md:gap-5 text-brand-gold">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+            title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+            className="p-2 rounded-full border border-brand-gold/30 dark:border-brand-gold/50 bg-brand-gold/5 dark:bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm hover:scale-105"
+          >
+            <span className="material-symbols-outlined text-xl md:text-2xl transition-transform duration-500 transform rotate-0 hover:rotate-180">
+              {theme === 'light' ? 'dark_mode' : 'light_mode'}
+            </span>
+          </button>
+
+          {/* Search Button */}
           <button 
             onClick={() => setIsSearchOpen(true)}
             aria-label="Search"
@@ -86,6 +101,7 @@ const Navbar = () => {
             <span className="material-symbols-outlined text-xl md:text-2xl">search</span>
           </button>
 
+          {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
@@ -100,13 +116,26 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-black/95 backdrop-blur-2xl md:hidden pt-24 pb-12 px-8 flex flex-col gap-8 overflow-y-auto">
+        <div className="fixed inset-0 z-30 bg-black/95 backdrop-blur-2xl md:hidden pt-24 pb-12 px-8 flex flex-col justify-between overflow-y-auto">
           <nav className="flex flex-col gap-6 font-serif tracking-[0.2em] text-xl uppercase text-white">
             <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)} className="py-2 hover:text-brand-gold transition-colors border-b border-white/10">Home</NavLink>
             <NavLink to="/restaurants" onClick={() => setIsMobileMenuOpen(false)} className="py-2 hover:text-brand-gold transition-colors border-b border-white/10">Restaurants</NavLink>
             <NavLink to="/hotels" onClick={() => setIsMobileMenuOpen(false)} className="py-2 hover:text-brand-gold transition-colors border-b border-white/10">Hotels</NavLink>
-            <NavLink to="/story" onClick={() => setIsMobileMenuOpen(false)} className="py-2 hover:text-brand-gold transition-colors">Story</NavLink>
+            <NavLink to="/story" onClick={() => setIsMobileMenuOpen(false)} className="py-2 hover:text-brand-gold transition-colors border-b border-white/10">Story</NavLink>
           </nav>
+
+          <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+            <span className="text-zinc-400 text-xs font-serif tracking-widest uppercase">Theme Display</span>
+            <button
+              onClick={toggleTheme}
+              className="px-4 py-2 rounded-full border border-brand-gold/50 bg-brand-gold/10 text-brand-gold text-xs font-serif uppercase tracking-widest flex items-center gap-2"
+            >
+              <span className="material-symbols-outlined text-base">
+                {theme === 'light' ? 'dark_mode' : 'light_mode'}
+              </span>
+              <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+            </button>
+          </div>
         </div>
       )}
 
