@@ -150,7 +150,11 @@ const Home = () => {
       {/* Cinematic Hero Section */}
       <section className="relative min-h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-[#fdfcfb] dark:bg-[#0b0c0d] pt-24 pb-6 transition-colors duration-300">
         <div className="absolute inset-0 z-0 flex items-center justify-center p-4 sm:p-8">
-          <img alt="Hero" className="w-full h-full object-contain opacity-100 max-h-[50vh] sm:max-h-[60vh] md:max-h-[65vh]" src="/hero-bg.jpg" />
+          <img
+            alt="Hero"
+            className="w-full h-full object-contain opacity-100 max-h-[50vh] sm:max-h-[60vh] md:max-h-[65vh] dark:invert dark:hue-rotate-180 dark:mix-blend-screen transition-all duration-300"
+            src="/hero-bg.jpg"
+          />
         </div>
         <div className="h-10"></div>
         <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-auto mb-6 sm:mb-10">
