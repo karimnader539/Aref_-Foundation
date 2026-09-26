@@ -87,6 +87,11 @@ const hotelData = {
         conceptTitle: 'Paradise on the shore.',
         conceptSubtitle: 'A pristine vision of coastal paradise and ultimate seaside relaxation.',
         conceptDescription: 'Elphistone Resort is a luxurious escape nestled along the pristine Red Sea coast. Combining stunning modern comfort with authentic seaside charm, the resort features private cabanas, multiple outdoor pools, and extensive sandy beaches. Savor international cuisines, explore vibrant coral reefs, or simply bask under the warm sun. Every detail is curated to deliver an unforgettable coastal getaway.',
+        contact: {
+            address: '25 KM, North Marsa Alam City, Egypt',
+            email: 'front.office@Elphistone.com',
+            phones: ['+(2) 012 22 189203', '012 27 903202']
+        },
         extension: {
             title: 'ELPHISTONE HOTEL AND SUITE APTS.',
             subtitle: 'NOW WELCOMING GUESTS',
@@ -308,7 +313,21 @@ const HotelDetails = () => {
                         </p>
                         <div className="w-16 h-px bg-brand-gold/40 mb-10" />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+                        <div className={`grid grid-cols-1 ${data.contact.address ? 'md:grid-cols-3 max-w-5xl' : 'md:grid-cols-2 max-w-3xl'} gap-6 w-full`}>
+                            {/* Address / Location Card */}
+                            {data.contact.address && (
+                                <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/90 border border-brand-gold/30 flex flex-col items-center text-center shadow-2xl">
+                                    <div className="w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-4 shadow-lg">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-brand-gold text-[11px] font-serif uppercase tracking-[0.2em] mb-1 font-semibold">Resort Location</span>
+                                    <span className="text-white font-medium text-sm sm:text-base leading-snug mt-1">{data.contact.address}</span>
+                                </div>
+                            )}
+
                             {/* Email Card */}
                             <a
                                 href={`mailto:${data.contact.email}`}
@@ -320,7 +339,7 @@ const HotelDetails = () => {
                                     </svg>
                                 </div>
                                 <span className="text-brand-gold text-[11px] font-serif uppercase tracking-[0.2em] mb-1 font-semibold">Email Inquiries</span>
-                                <span className="text-white font-medium text-base sm:text-lg group-hover:text-brand-gold transition-colors">{data.contact.email}</span>
+                                <span className="text-white font-medium text-sm sm:text-base group-hover:text-brand-gold transition-colors break-all">{data.contact.email}</span>
                             </a>
 
                             {/* Phone Lines Card */}
@@ -336,7 +355,7 @@ const HotelDetails = () => {
                                         <a
                                             key={idx}
                                             href={`tel:${phone}`}
-                                            className="text-white font-medium text-base sm:text-lg hover:text-brand-gold transition-colors tracking-wider"
+                                            className="text-white font-medium text-sm sm:text-base hover:text-brand-gold transition-colors tracking-wider"
                                         >
                                             {phone}
                                         </a>
