@@ -403,7 +403,7 @@ const HotelDetails = () => {
                         <div className="lg:col-span-6 w-full">
                             <div className="relative group overflow-hidden rounded-3xl border border-brand-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-zinc-950 transition-all duration-500 hover:border-brand-gold/60 h-[300px] sm:h-[420px] lg:h-[500px]">
                                 <img
-                                    src="/elphistone-gallery-26.jpg"
+                                    src="/elphistone-suite-apts.jpg"
                                     alt="Elphistone Hotel & Suite Apts"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
