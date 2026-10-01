@@ -37,6 +37,7 @@ const hotelData = {
             foodDining: [],
             beach: [],
             beachActivities: [],
+            bedouinTent: [],
             pool: [],
             hotelExterior: [
                 '/royal-gallery-8.jpeg',
@@ -145,6 +146,12 @@ const hotelData = {
                 '/Beach Activities/613A7632.jpeg',
                 '/Beach Activities/613A7645.jpeg'
             ],
+            bedouinTent: [
+                '/BEDOUIN TENT/DSC05634.jpeg',
+                '/BEDOUIN TENT/DSC05645.jpeg',
+                '/BEDOUIN TENT/DSC05651.jpeg',
+                '/BEDOUIN TENT/DSC05662.jpeg'
+            ],
             pool: [
                 '/elphistone-gallery-29.jpg'
             ],
@@ -164,6 +171,10 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/BEDOUIN TENT/DSC05634.jpeg',
+            '/BEDOUIN TENT/DSC05645.jpeg',
+            '/BEDOUIN TENT/DSC05651.jpeg',
+            '/BEDOUIN TENT/DSC05662.jpeg',
             '/Beach Activities/613A7605-1.jpeg',
             '/Beach Activities/613A7605.jpeg',
             '/Beach Activities/613A7632.jpeg',
@@ -227,6 +238,7 @@ const CATEGORY_FOLDERS_DEF = [
     { key: 'foodDining', name: 'Food & Restaurants', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
     { key: 'beach', name: 'Beach', icon: '🏖️', desc: 'Shoreline, cabanas, Red Sea & pier' },
     { key: 'beachActivities', name: 'Beach Activities', icon: '🏄', desc: 'Water sports, beach volleyball & shoreline recreation' },
+    { key: 'bedouinTent', name: 'Bedouin Tent', icon: '⛺', desc: 'Authentic Bedouin lounge, cultural evenings & desert ambiance' },
     { key: 'pool', name: 'Pool', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
@@ -520,6 +532,34 @@ const HotelDetails = () => {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                             <span className="text-brand-gold text-xs font-serif tracking-wide">Beach Activity #{index + 1}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Category 4: Bedouin Tent Section */}
+                    {data.categorizedGallery?.bedouinTent && data.categorizedGallery.bedouinTent.length > 0 && (
+                        <div className="mb-14 sm:mb-24">
+                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
+                                <div>
+                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 4</span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Bedouin Tent</h3>
+                                </div>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.bedouinTent.length} Photos</span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                {data.categorizedGallery.bedouinTent.map((item, index) => (
+                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
+                                        <img
+                                            alt={`${data.name} Bedouin Tent ${index + 1}`}
+                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                            src={item}
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Bedouin Tent #{index + 1}</span>
                                         </div>
                                     </div>
                                 ))}
