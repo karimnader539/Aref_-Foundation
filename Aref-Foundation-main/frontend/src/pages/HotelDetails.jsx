@@ -40,6 +40,7 @@ const hotelData = {
             bedouinTent: [],
             diving: [],
             gym: [],
+            lobby: [],
             pool: [],
             hotelExterior: [
                 '/royal-gallery-8.jpeg',
@@ -170,6 +171,14 @@ const hotelData = {
                 '/Gym/613A7804.jpeg',
                 '/Gym/613A7806.jpeg'
             ],
+            lobby: [
+                '/Lobby/613A9818.jpeg',
+                '/Lobby/613A9828.jpeg',
+                '/Lobby/613A9840.jpeg',
+                '/Lobby/DSC05914.jpeg',
+                '/Lobby/DSC05932.jpeg',
+                '/Lobby/DSC05981.jpeg'
+            ],
             pool: [
                 '/elphistone-gallery-29.jpg'
             ],
@@ -189,6 +198,12 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Lobby/613A9818.jpeg',
+            '/Lobby/613A9828.jpeg',
+            '/Lobby/613A9840.jpeg',
+            '/Lobby/DSC05914.jpeg',
+            '/Lobby/DSC05932.jpeg',
+            '/Lobby/DSC05981.jpeg',
             '/Gym/613A7775.jpeg',
             '/Gym/613A7804.jpeg',
             '/Gym/613A7806.jpeg',
@@ -271,6 +286,7 @@ const CATEGORY_FOLDERS_DEF = [
     { key: 'bedouinTent', name: 'Bedouin Tent', icon: '⛺', desc: 'Authentic Bedouin lounge, cultural evenings & desert ambiance' },
     { key: 'diving', name: 'Diving Center', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
     { key: 'gym', name: 'Fitness & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
+    { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'pool', name: 'Pool', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
@@ -648,6 +664,34 @@ const HotelDetails = () => {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                             <span className="text-brand-gold text-xs font-serif tracking-wide">Fitness Facility #{index + 1}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Category 7: Lobby Section */}
+                    {data.categorizedGallery?.lobby && data.categorizedGallery.lobby.length > 0 && (
+                        <div className="mb-14 sm:mb-24">
+                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
+                                <div>
+                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 7</span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Lobby & Reception</h3>
+                                </div>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.lobby.length} Photos</span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                {data.categorizedGallery.lobby.map((item, index) => (
+                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
+                                        <img
+                                            alt={`${data.name} Lobby ${index + 1}`}
+                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                            src={item}
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Lobby & Lounge #{index + 1}</span>
                                         </div>
                                     </div>
                                 ))}
