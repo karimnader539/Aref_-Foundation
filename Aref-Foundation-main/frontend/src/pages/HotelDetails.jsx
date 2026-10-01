@@ -132,15 +132,11 @@ const hotelData = {
                 '/elphistone-gallery-45.jpg'
             ],
             beach: [
-                '/elphistone-gallery-5.jpg',
-                '/elphistone-gallery-23.jpg',
-                '/elphistone-gallery-24.jpg',
-                '/elphistone-gallery-30.jpg',
-                '/elphistone-gallery-31.jpg',
-                '/elphistone-gallery-32.jpg',
-                '/elphistone-gallery-33.jpg',
-                '/elphistone-gallery-34.jpg',
-                '/elphistone-gallery-35.jpg'
+                '/Beach/613A7556.jpeg',
+                '/Beach/DSC06461.jpeg',
+                '/Beach/DSC06463 (1).jpeg',
+                '/Beach/DSC06483.jpeg',
+                '/Beach/DSC06486.jpeg'
             ],
             pool: [
                 '/elphistone-gallery-29.jpg'
@@ -161,6 +157,11 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Beach/613A7556.jpeg',
+            '/Beach/DSC06461.jpeg',
+            '/Beach/DSC06463 (1).jpeg',
+            '/Beach/DSC06483.jpeg',
+            '/Beach/DSC06486.jpeg',
             '/elphistone-gallery-2.jpg',
             '/elphistone-gallery-4.jpg',
             '/elphistone-gallery-5.jpg',
