@@ -41,6 +41,7 @@ const hotelData = {
             diving: [],
             gym: [],
             lobby: [],
+            reception: [],
             pool: [],
             hotelExterior: [
                 '/royal-gallery-8.jpeg',
@@ -179,6 +180,16 @@ const hotelData = {
                 '/Lobby/DSC05932.jpeg',
                 '/Lobby/DSC05981.jpeg'
             ],
+            reception: [
+                '/Reciption/613A9812.jpeg',
+                '/Reciption/613A9814.jpeg',
+                '/Reciption/613A9819-HDR.jpeg',
+                '/Reciption/DSC05691.jpeg',
+                '/Reciption/DSC05696.jpeg',
+                '/Reciption/DSC05701.jpeg',
+                '/Reciption/DSC05702.jpeg',
+                '/Reciption/DSC05712.jpeg'
+            ],
             pool: [
                 '/elphistone-gallery-29.jpg'
             ],
@@ -198,6 +209,14 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Reciption/613A9812.jpeg',
+            '/Reciption/613A9814.jpeg',
+            '/Reciption/613A9819-HDR.jpeg',
+            '/Reciption/DSC05691.jpeg',
+            '/Reciption/DSC05696.jpeg',
+            '/Reciption/DSC05701.jpeg',
+            '/Reciption/DSC05702.jpeg',
+            '/Reciption/DSC05712.jpeg',
             '/Lobby/613A9818.jpeg',
             '/Lobby/613A9828.jpeg',
             '/Lobby/613A9840.jpeg',
@@ -287,6 +306,7 @@ const CATEGORY_FOLDERS_DEF = [
     { key: 'diving', name: 'Diving Center', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
     { key: 'gym', name: 'Fitness & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
+    { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
     { key: 'pool', name: 'Pool', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
@@ -692,6 +712,34 @@ const HotelDetails = () => {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                             <span className="text-brand-gold text-xs font-serif tracking-wide">Lobby & Lounge #{index + 1}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Category 8: Reception Section */}
+                    {data.categorizedGallery?.reception && data.categorizedGallery.reception.length > 0 && (
+                        <div className="mb-14 sm:mb-24">
+                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
+                                <div>
+                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 8</span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Reception & Front Desk</h3>
+                                </div>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.reception.length} Photos</span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                {data.categorizedGallery.reception.map((item, index) => (
+                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
+                                        <img
+                                            alt={`${data.name} Reception ${index + 1}`}
+                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                            src={item}
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Front Desk #{index + 1}</span>
                                         </div>
                                     </div>
                                 ))}
