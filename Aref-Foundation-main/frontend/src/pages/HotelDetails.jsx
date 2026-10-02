@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const hotelData = {
     'royal': {
@@ -121,22 +121,6 @@ const hotelData = {
                 '/elphistone-gallery-28.jpg',
                 '/elphistone-gallery-46.jpg'
             ],
-            foodDining: [
-                '/elphistone-gallery-2.jpg',
-                '/elphistone-gallery-4.jpg',
-                '/elphistone-gallery-7.jpg',
-                '/elphistone-gallery-8.jpg',
-                '/elphistone-gallery-36.jpg',
-                '/elphistone-gallery-37.jpg',
-                '/elphistone-gallery-38.jpg',
-                '/elphistone-gallery-39.jpg',
-                '/elphistone-gallery-40.jpg',
-                '/elphistone-gallery-41.jpg',
-                '/elphistone-gallery-42.jpg',
-                '/elphistone-gallery-43.jpg',
-                '/elphistone-gallery-44.jpg',
-                '/elphistone-gallery-45.jpg'
-            ],
             beach: [
                 '/Beach/613A7556.jpeg',
                 '/Beach/DSC06461.jpeg',
@@ -189,6 +173,22 @@ const hotelData = {
                 '/Reciption/DSC05701.jpeg',
                 '/Reciption/DSC05702.jpeg',
                 '/Reciption/DSC05712.jpeg'
+            ],
+            foodDining: [
+                '/elphistone-gallery-2.jpg',
+                '/elphistone-gallery-4.jpg',
+                '/elphistone-gallery-7.jpg',
+                '/elphistone-gallery-8.jpg',
+                '/elphistone-gallery-36.jpg',
+                '/elphistone-gallery-37.jpg',
+                '/elphistone-gallery-38.jpg',
+                '/elphistone-gallery-39.jpg',
+                '/elphistone-gallery-40.jpg',
+                '/elphistone-gallery-41.jpg',
+                '/elphistone-gallery-42.jpg',
+                '/elphistone-gallery-43.jpg',
+                '/elphistone-gallery-44.jpg',
+                '/elphistone-gallery-45.jpg'
             ],
             pool: [
                 '/elphistone-gallery-29.jpg'
@@ -297,40 +297,243 @@ const hotelData = {
     }
 };
 
-const CATEGORY_FOLDERS_DEF = [
-    { key: 'rooms', name: 'Rooms', icon: '🛏️', desc: 'Bedrooms, luxury suites & bathrooms' },
-    { key: 'foodDining', name: 'Food & Restaurants', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
-    { key: 'beach', name: 'Beach', icon: '🏖️', desc: 'Shoreline, cabanas, Red Sea & pier' },
+const CATEGORY_ORDER = [
+    { key: 'rooms', name: 'Rooms & Suites', icon: '🛏️', desc: 'Bedrooms, luxury suites & bathrooms' },
+    { key: 'beach', name: 'Beach & Coastline', icon: '🏖️', desc: 'Shoreline, cabanas, Red Sea & pier' },
     { key: 'beachActivities', name: 'Beach Activities', icon: '🏄', desc: 'Water sports, beach volleyball & shoreline recreation' },
     { key: 'bedouinTent', name: 'Bedouin Tent', icon: '⛺', desc: 'Authentic Bedouin lounge, cultural evenings & desert ambiance' },
-    { key: 'diving', name: 'Diving Center', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
-    { key: 'gym', name: 'Fitness & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
+    { key: 'diving', name: 'Diving & Marine Life', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
+    { key: 'gym', name: 'Fitness Center & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
-    { key: 'pool', name: 'Pool', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
+    { key: 'foodDining', name: 'Food & Restaurants', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
+    { key: 'pool', name: 'Pools & Resort Grounds', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
-    { key: 'activities', name: 'Activities', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
-    { key: 'facilities', name: 'Facilities', icon: '💆', desc: 'Lobby, reception, shops & services' },
-    { key: 'other', name: 'Other', icon: '📁', desc: 'Additional resort highlights' }
+    { key: 'activities', name: 'Activities & Sports', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
+    { key: 'facilities', name: 'Facilities & Services', icon: '💆', desc: 'Lobby, reception, shops & services' },
+    { key: 'other', name: 'Other Highlights', icon: '📁', desc: 'Additional resort highlights' }
 ];
+
+// Reusable optimized gallery card with shimmer skeleton and progressive load
+const GalleryCard = ({ src, alt, caption, onClick }) => {
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+
+    return (
+        <div
+            onClick={onClick}
+            className="group relative overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/50 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-2xl hover:scale-[1.01]"
+        >
+            {/* Shimmer skeleton while loading */}
+            {!loaded && !error && (
+                <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
+                    <div className="w-full h-full animate-pulse bg-gradient-to-r from-zinc-900 via-zinc-800/70 to-zinc-900" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full border-2 border-brand-gold/30 border-t-brand-gold animate-spin" />
+                    </div>
+                </div>
+            )}
+
+            {/* Fallback in case of image load error */}
+            {error && (
+                <div className="w-full h-[240px] sm:h-[320px] bg-zinc-900 flex items-center justify-center text-zinc-500 text-xs">
+                    <span>Photo Unavailable</span>
+                </div>
+            )}
+
+            {/* Lazy loaded image */}
+            <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setLoaded(true)}
+                onError={() => setError(true)}
+                className={`w-full h-[240px] sm:h-[320px] object-cover transition-all duration-700 transform-gpu group-hover:scale-105 ${
+                    loaded ? 'opacity-100' : 'opacity-0'
+                }`}
+            />
+
+            {/* Hover Caption Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span className="text-brand-gold text-xs font-serif tracking-wide">{caption}</span>
+            </div>
+        </div>
+    );
+};
+
+// Interactive Lightbox Modal
+const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') onClose();
+            if (e.key === 'ArrowLeft') onNavigate(-1);
+            if (e.key === 'ArrowRight') onNavigate(1);
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'hidden';
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'auto';
+        };
+    }, [onClose, onNavigate]);
+
+    if (!images || images.length === 0 || currentIndex < 0 || currentIndex >= images.length) {
+        return null;
+    }
+
+    const currentItem = images[currentIndex];
+
+    return (
+        <div
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8 select-none animate-fadeIn"
+            onClick={onClose}
+        >
+            {/* Top Bar */}
+            <div
+                className="absolute top-4 left-4 right-4 flex items-center justify-between text-white z-50 max-w-7xl mx-auto"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <span className="text-xs sm:text-sm font-mono tracking-widest text-zinc-400">
+                    {currentIndex + 1} / {images.length}
+                </span>
+                <button
+                    onClick={onClose}
+                    className="w-10 h-10 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-colors text-lg"
+                    aria-label="Close"
+                >
+                    ✕
+                </button>
+            </div>
+
+            {/* Prev Button */}
+            {images.length > 1 && (
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigate(-1);
+                    }}
+                    className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl"
+                    aria-label="Previous image"
+                >
+                    ‹
+                </button>
+            )}
+
+            {/* Next Button */}
+            {images.length > 1 && (
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigate(1);
+                    }}
+                    className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl"
+                    aria-label="Next image"
+                >
+                    ›
+                </button>
+            )}
+
+            {/* Main Image */}
+            <div
+                className="max-w-6xl max-h-[82vh] flex items-center justify-center relative my-auto"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <img
+                    src={currentItem.src}
+                    alt={currentItem.alt || 'Gallery photo'}
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
+                />
+            </div>
+
+            {/* Caption */}
+            {currentItem.caption && (
+                <div className="mt-3 text-center z-50" onClick={(e) => e.stopPropagation()}>
+                    <p className="text-brand-gold text-sm font-serif tracking-wide">{currentItem.caption}</p>
+                </div>
+            )}
+        </div>
+    );
+};
 
 const HotelDetails = () => {
     const { id } = useParams();
-    const data = hotelData[id] || hotelData['royal']; // Fallback to Royal if not found
-    const [selectedCategoryFolder, setSelectedCategoryFolder] = useState(null);
-    const [lightboxImage, setLightboxImage] = useState(null);
+    const data = hotelData[id] || hotelData['royal'];
+    const [lightboxState, setLightboxState] = useState({ isOpen: false, images: [], index: 0 });
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        setSelectedCategoryFolder(null);
     }, [id]);
+
+    // Compute active categories for current hotel with automatic 1-based category numbering
+    const activeCategories = useMemo(() => {
+        if (!data.categorizedGallery) return [];
+        let catCounter = 1;
+        const list = [];
+        CATEGORY_ORDER.forEach((cat) => {
+            const items = data.categorizedGallery[cat.key];
+            if (items && items.length > 0) {
+                list.push({
+                    ...cat,
+                    categoryNumber: catCounter++,
+                    items
+                });
+            }
+        });
+        return list;
+    }, [data]);
+
+    // Flat list of all gallery photos for lightbox
+    const allGalleryItems = useMemo(() => {
+        const items = [];
+        activeCategories.forEach((cat) => {
+            cat.items.forEach((src, idx) => {
+                items.push({
+                    src,
+                    alt: `${data.name} ${cat.name} ${idx + 1}`,
+                    caption: `${cat.name} #${idx + 1}`
+                });
+            });
+        });
+        return items;
+    }, [activeCategories, data.name]);
+
+    const openLightbox = useCallback((categoryItems, itemIndex, categoryName) => {
+        const categoryImages = categoryItems.map((src, idx) => ({
+            src,
+            alt: `${data.name} ${categoryName} ${idx + 1}`,
+            caption: `${categoryName} #${idx + 1}`
+        }));
+        setLightboxState({
+            isOpen: true,
+            images: categoryImages,
+            index: itemIndex
+        });
+    }, [data.name]);
+
+    const handleLightboxNavigate = useCallback((direction) => {
+        setLightboxState((prev) => {
+            const newIndex = (prev.index + direction + prev.images.length) % prev.images.length;
+            return { ...prev, index: newIndex };
+        });
+    }, []);
+
+    const closeLightbox = useCallback(() => {
+        setLightboxState((prev) => ({ ...prev, isOpen: false }));
+    }, []);
 
     return (
         <div className="font-sans bg-brand-dark overflow-x-hidden">
             {/* Header / Hero */}
             <header className="relative min-h-[80vh] md:h-screen w-full flex flex-col items-center justify-center pt-20 md:pt-24 overflow-hidden">
                 <div className="absolute inset-0 w-full h-full border-b border-brand-gold/20">
-                    <img alt={`${data.name} Interior`} className="w-full h-full object-cover object-center shadow-2xl drop-shadow-2xl transform-gpu" src={data.heroImage} decoding="async" />
+                    <img
+                        alt={`${data.name} Interior`}
+                        className="w-full h-full object-cover object-center shadow-2xl drop-shadow-2xl transform-gpu"
+                        src={data.heroImage}
+                        fetchPriority="high"
+                        decoding="async"
+                    />
                     <div className="absolute inset-0 bg-black/50"></div>
                 </div>
 
@@ -356,7 +559,7 @@ const HotelDetails = () => {
                     </div>
                     <div className="md:col-span-8 md:col-start-5">
                         <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white leading-tight mb-6 sm:mb-12">
-                            {data.conceptTitle}<br />
+                            {data.conceptTitle || 'Elegance & Comfort'}<br />
                             {data.conceptSubtitle}
                         </h2>
                         <p className="text-brand-muted dark:text-zinc-300 leading-relaxed text-base sm:text-lg max-w-3xl font-light">
@@ -498,6 +701,8 @@ const HotelDetails = () => {
                                 <img
                                     src="/elphistone-suite-apts.jpg"
                                     alt="Elphistone Hotel & Suite Apts"
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
@@ -523,289 +728,50 @@ const HotelDetails = () => {
                         <div className="w-12 h-px bg-brand-gold/50 mx-auto my-4" />
                     </div>
 
-                    {/* Category 1: Rooms Section */}
-                    {data.categorizedGallery?.rooms && data.categorizedGallery.rooms.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
+                    {/* Render all active categories with responsive grid and lazy loading */}
+                    {activeCategories.map((cat) => (
+                        <div key={cat.key} className="mb-14 sm:mb-24">
                             <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
                                 <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 1</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Rooms & Suites</h3>
+                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">
+                                        CATEGORY {cat.categoryNumber}
+                                    </span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">
+                                        {cat.name}
+                                    </h3>
                                 </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.rooms.length} Photos</span>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">
+                                    {cat.items.length} Photos
+                                </span>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.rooms.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Room ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Room Detail #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
 
-                    {/* Category 2: Beach Section */}
-                    {data.categorizedGallery?.beach && data.categorizedGallery.beach.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 2</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Beach & Coastline</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.beach.length} Photos</span>
-                            </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.beach.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Beach ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Beach & Shoreline #{index + 1}</span>
-                                        </div>
-                                    </div>
+                                {cat.items.map((src, index) => (
+                                    <GalleryCard
+                                        key={index}
+                                        src={src}
+                                        alt={`${data.name} ${cat.name} ${index + 1}`}
+                                        caption={`${cat.name} #${index + 1}`}
+                                        onClick={() => openLightbox(cat.items, index, cat.name)}
+                                    />
                                 ))}
                             </div>
                         </div>
-                    )}
-
-                    {/* Category 3: Beach Activities Section */}
-                    {data.categorizedGallery?.beachActivities && data.categorizedGallery.beachActivities.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 3</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Beach Activities</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.beachActivities.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.beachActivities.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Beach Activity ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Beach Activity #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 4: Bedouin Tent Section */}
-                    {data.categorizedGallery?.bedouinTent && data.categorizedGallery.bedouinTent.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 4</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Bedouin Tent</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.bedouinTent.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.bedouinTent.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Bedouin Tent ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Bedouin Tent #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 5: Diving Section */}
-                    {data.categorizedGallery?.diving && data.categorizedGallery.diving.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 5</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Diving & Marine Life</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.diving.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.diving.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Diving ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Diving Exploration #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 6: Gym Section */}
-                    {data.categorizedGallery?.gym && data.categorizedGallery.gym.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 6</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Fitness Center & Gym</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.gym.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.gym.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Gym ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Fitness Facility #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 7: Lobby Section */}
-                    {data.categorizedGallery?.lobby && data.categorizedGallery.lobby.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 7</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Lobby & Reception</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.lobby.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.lobby.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Lobby ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Lobby & Lounge #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 8: Reception Section */}
-                    {data.categorizedGallery?.reception && data.categorizedGallery.reception.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 8</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Reception & Front Desk</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.reception.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.reception.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Reception ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Front Desk #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 3: Pools & Grounds Section */}
-                    {data.categorizedGallery?.poolsGrounds && data.categorizedGallery.poolsGrounds.length > 0 && (
-                        <div className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 3</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Pools & Resort Grounds</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.poolsGrounds.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.poolsGrounds.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Pool ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Resort Grounds #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Category 4: Dining & Amenities Section */}
-                    {data.categorizedGallery?.dining && data.categorizedGallery.dining.length > 0 && (
-                        <div className="mb-8 sm:mb-12">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">CATEGORY 4</span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">Dining & Amenities</h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">{data.categorizedGallery.dining.length} Photos</span>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {data.categorizedGallery.dining.map((item, index) => (
-                                    <div key={index} className="relative group overflow-hidden rounded-xl bg-zinc-900 border border-white/5 hover:border-brand-gold/40 transition-all duration-500">
-                                        <img
-                                            alt={`${data.name} Dining ${index + 1}`}
-                                            className="w-full h-[240px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
-                                            src={item}
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span className="text-brand-gold text-xs font-serif tracking-wide">Dining & Atmosphere #{index + 1}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                    ))}
                 </div>
             </section>
+
+            {/* Lightbox Modal */}
+            {lightboxState.isOpen && (
+                <LightboxModal
+                    images={lightboxState.images}
+                    currentIndex={lightboxState.index}
+                    onClose={closeLightbox}
+                    onNavigate={handleLightboxNavigate}
+                />
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default HotelDetails;
