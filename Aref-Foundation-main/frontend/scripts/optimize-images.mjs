@@ -10,7 +10,8 @@ const targetDirs = [
     'Gym',
     'Lobby',
     'Reciption',
-    'Resturant'
+    'Resturant',
+    'Rooms'
 ];
 
 const publicDir = path.resolve('public');
