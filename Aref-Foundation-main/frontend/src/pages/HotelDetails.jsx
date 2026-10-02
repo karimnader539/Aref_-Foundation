@@ -40,11 +40,12 @@ const hotelData = {
             diving: [],
             gym: [],
             salon: [],
+            pool: [],
+            views: [],
             lobby: [],
             reception: [],
             restaurants: [],
             foodDining: [],
-            pool: [],
             hotelExterior: [
                 '/royal-gallery-8.jpeg',
                 '/royal-gallery-10.jpeg',
@@ -162,6 +163,20 @@ const hotelData = {
                 '/salon/613A7831.jpeg',
                 '/salon/613A7833.jpeg'
             ],
+            pool: [
+                '/Swimming pool/613A6805.jpeg',
+                '/Swimming pool/613A6836.jpeg'
+            ],
+            views: [
+                '/Views/DJI_0012.jpeg',
+                '/Views/DJI_0015 (1).jpeg',
+                '/Views/DJI_0015.jpeg',
+                '/Views/DJI_0022.jpeg',
+                '/Views/DJI_0027.jpeg',
+                '/Views/DJI_0034.jpeg',
+                '/Views/DJI_0037.jpeg',
+                '/Views/DJI_0046.jpeg'
+            ],
             lobby: [
                 '/Lobby/613A9818.jpeg',
                 '/Lobby/613A9828.jpeg',
@@ -208,10 +223,6 @@ const hotelData = {
                 '/elphistone-gallery-44.jpg',
                 '/elphistone-gallery-45.jpg'
             ],
-            pool: [
-                '/Swimming pool/613A6805.jpeg',
-                '/Swimming pool/613A6836.jpeg'
-            ],
             hotelExterior: [
                 '/elphistone-gallery-6.jpg',
                 '/elphistone-gallery-26.jpg',
@@ -228,6 +239,14 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Views/DJI_0012.jpeg',
+            '/Views/DJI_0015 (1).jpeg',
+            '/Views/DJI_0015.jpeg',
+            '/Views/DJI_0022.jpeg',
+            '/Views/DJI_0027.jpeg',
+            '/Views/DJI_0034.jpeg',
+            '/Views/DJI_0037.jpeg',
+            '/Views/DJI_0046.jpeg',
             '/Swimming pool/613A6805.jpeg',
             '/Swimming pool/613A6836.jpeg',
             '/salon/613A7831.jpeg',
@@ -353,6 +372,7 @@ const CATEGORY_ORDER = [
     { key: 'gym', name: 'Fitness Center & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
     { key: 'salon', name: 'Beauty Salon & Spa', icon: '💇', desc: 'Beauty salon, styling & wellness treatments' },
     { key: 'pool', name: 'Swimming Pools', icon: '🏊', desc: 'Resort swimming pools & aquatic relaxation' },
+    { key: 'views', name: 'Resort Views & Panorama', icon: '🌅', desc: 'Panoramic drone views, sunrise & coastal landscape' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
     { key: 'restaurants', name: 'Restaurants', icon: '🍴', desc: 'Main restaurant, culinary delights & dining spaces' },
