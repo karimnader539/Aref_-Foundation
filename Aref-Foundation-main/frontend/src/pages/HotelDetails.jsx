@@ -112,7 +112,6 @@ const hotelData = {
                 '/Rooms/DSC05868.jpeg',
                 '/Rooms/DSC05870.jpeg',
                 '/Rooms/DSC05872.jpeg',
-                '/Rooms/DSC06170-HDR (1).jpeg',
                 '/Rooms/DSC06170-HDR.jpeg',
                 '/Rooms/DSC06216-HDR.jpeg',
                 '/Rooms/DSC06220-HDR.jpeg',
@@ -132,7 +131,6 @@ const hotelData = {
                 '/Beach/DSC06486.jpeg'
             ],
             beachActivities: [
-                '/Beach Activities/613A7605-1.jpeg',
                 '/Beach Activities/613A7605.jpeg',
                 '/Beach Activities/613A7632.jpeg',
                 '/Beach Activities/613A7645.jpeg'
@@ -150,7 +148,6 @@ const hotelData = {
                 '/Diving/613A7699.jpeg',
                 '/Diving/613A7724.jpeg',
                 '/Diving/613A7731.jpeg',
-                '/Diving/613A7741 (1).jpeg',
                 '/Diving/613A7741.jpeg',
                 '/Diving/613A7753.jpeg'
             ],
@@ -169,7 +166,6 @@ const hotelData = {
             ],
             views: [
                 '/Views/DJI_0012.jpeg',
-                '/Views/DJI_0015 (1).jpeg',
                 '/Views/DJI_0015.jpeg',
                 '/Views/DJI_0022.jpeg',
                 '/Views/DJI_0027.jpeg',
@@ -240,7 +236,6 @@ const hotelData = {
         },
         gallery: [
             '/Views/DJI_0012.jpeg',
-            '/Views/DJI_0015 (1).jpeg',
             '/Views/DJI_0015.jpeg',
             '/Views/DJI_0022.jpeg',
             '/Views/DJI_0027.jpeg',
@@ -254,7 +249,6 @@ const hotelData = {
             '/Rooms/DSC05868.jpeg',
             '/Rooms/DSC05870.jpeg',
             '/Rooms/DSC05872.jpeg',
-            '/Rooms/DSC06170-HDR (1).jpeg',
             '/Rooms/DSC06170-HDR.jpeg',
             '/Rooms/DSC06216-HDR.jpeg',
             '/Rooms/DSC06220-HDR.jpeg',
@@ -298,14 +292,12 @@ const hotelData = {
             '/Diving/613A7699.jpeg',
             '/Diving/613A7724.jpeg',
             '/Diving/613A7731.jpeg',
-            '/Diving/613A7741 (1).jpeg',
             '/Diving/613A7741.jpeg',
             '/Diving/613A7753.jpeg',
             '/BEDOUIN TENT/DSC05634.jpeg',
             '/BEDOUIN TENT/DSC05645.jpeg',
             '/BEDOUIN TENT/DSC05651.jpeg',
             '/BEDOUIN TENT/DSC05662.jpeg',
-            '/Beach Activities/613A7605-1.jpeg',
             '/Beach Activities/613A7605.jpeg',
             '/Beach Activities/613A7632.jpeg',
             '/Beach Activities/613A7645.jpeg',
