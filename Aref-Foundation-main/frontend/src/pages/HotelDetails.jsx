@@ -39,6 +39,7 @@ const hotelData = {
             bedouinTent: [],
             diving: [],
             gym: [],
+            salon: [],
             lobby: [],
             reception: [],
             restaurants: [],
@@ -157,6 +158,10 @@ const hotelData = {
                 '/Gym/613A7804.jpeg',
                 '/Gym/613A7806.jpeg'
             ],
+            salon: [
+                '/salon/613A7831.jpeg',
+                '/salon/613A7833.jpeg'
+            ],
             lobby: [
                 '/Lobby/613A9818.jpeg',
                 '/Lobby/613A9828.jpeg',
@@ -222,6 +227,8 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/salon/613A7831.jpeg',
+            '/salon/613A7833.jpeg',
             '/Rooms/DSC05868.jpeg',
             '/Rooms/DSC05870.jpeg',
             '/Rooms/DSC05872.jpeg',
@@ -341,6 +348,7 @@ const CATEGORY_ORDER = [
     { key: 'bedouinTent', name: 'Bedouin Tent', icon: '⛺', desc: 'Authentic Bedouin lounge, cultural evenings & desert ambiance' },
     { key: 'diving', name: 'Diving & Marine Life', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
     { key: 'gym', name: 'Fitness Center & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
+    { key: 'salon', name: 'Beauty Salon & Spa', icon: '💇', desc: 'Beauty salon, styling & wellness treatments' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
     { key: 'restaurants', name: 'Restaurants', icon: '🍴', desc: 'Main restaurant, culinary delights & dining spaces' },
