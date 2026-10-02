@@ -34,7 +34,6 @@ const hotelData = {
                 '/royal-gallery-24.jpeg',
                 '/royal-gallery-25.jpeg'
             ],
-            foodDining: [],
             beach: [],
             beachActivities: [],
             bedouinTent: [],
@@ -42,6 +41,8 @@ const hotelData = {
             gym: [],
             lobby: [],
             reception: [],
+            restaurants: [],
+            foodDining: [],
             pool: [],
             hotelExterior: [
                 '/royal-gallery-8.jpeg',
@@ -174,6 +175,18 @@ const hotelData = {
                 '/Reciption/DSC05702.jpeg',
                 '/Reciption/DSC05712.jpeg'
             ],
+            restaurants: [
+                '/Resturant/613A9627.jpeg',
+                '/Resturant/613A9631.jpeg',
+                '/Resturant/613A9638.jpeg',
+                '/Resturant/DSC05495-HDR.jpeg',
+                '/Resturant/DSC05501-HDR.jpeg',
+                '/Resturant/DSC05512-HDR.jpeg',
+                '/Resturant/DSC05524-HDR.jpeg',
+                '/Resturant/DSC05571.jpeg',
+                '/Resturant/DSC05584-HDR.jpeg',
+                '/Resturant/DSC05590-HDR.jpeg'
+            ],
             foodDining: [
                 '/elphistone-gallery-2.jpg',
                 '/elphistone-gallery-4.jpg',
@@ -209,6 +222,16 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Resturant/613A9627.jpeg',
+            '/Resturant/613A9631.jpeg',
+            '/Resturant/613A9638.jpeg',
+            '/Resturant/DSC05495-HDR.jpeg',
+            '/Resturant/DSC05501-HDR.jpeg',
+            '/Resturant/DSC05512-HDR.jpeg',
+            '/Resturant/DSC05524-HDR.jpeg',
+            '/Resturant/DSC05571.jpeg',
+            '/Resturant/DSC05584-HDR.jpeg',
+            '/Resturant/DSC05590-HDR.jpeg',
             '/Reciption/613A9812.jpeg',
             '/Reciption/613A9814.jpeg',
             '/Reciption/613A9819-HDR.jpeg',
@@ -306,7 +329,8 @@ const CATEGORY_ORDER = [
     { key: 'gym', name: 'Fitness Center & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
-    { key: 'foodDining', name: 'Food & Restaurants', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
+    { key: 'restaurants', name: 'Restaurants', icon: '🍴', desc: 'Main restaurant, culinary delights & dining spaces' },
+    { key: 'foodDining', name: 'Food & Dining', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
     { key: 'pool', name: 'Pools & Resort Grounds', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities & Sports', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
