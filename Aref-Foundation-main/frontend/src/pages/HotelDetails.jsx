@@ -209,7 +209,8 @@ const hotelData = {
                 '/elphistone-gallery-45.jpg'
             ],
             pool: [
-                '/elphistone-gallery-29.jpg'
+                '/Swimming pool/613A6805.jpeg',
+                '/Swimming pool/613A6836.jpeg'
             ],
             hotelExterior: [
                 '/elphistone-gallery-6.jpg',
@@ -227,6 +228,8 @@ const hotelData = {
             other: []
         },
         gallery: [
+            '/Swimming pool/613A6805.jpeg',
+            '/Swimming pool/613A6836.jpeg',
             '/salon/613A7831.jpeg',
             '/salon/613A7833.jpeg',
             '/Rooms/DSC05868.jpeg',
@@ -349,11 +352,11 @@ const CATEGORY_ORDER = [
     { key: 'diving', name: 'Diving & Marine Life', icon: '🤿', desc: 'Scuba diving, coral reef exploration & underwater adventures' },
     { key: 'gym', name: 'Fitness Center & Gym', icon: '🏋️', desc: 'Workout equipment, fitness center & wellness' },
     { key: 'salon', name: 'Beauty Salon & Spa', icon: '💇', desc: 'Beauty salon, styling & wellness treatments' },
+    { key: 'pool', name: 'Swimming Pools', icon: '🏊', desc: 'Resort swimming pools & aquatic relaxation' },
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
     { key: 'restaurants', name: 'Restaurants', icon: '🍴', desc: 'Main restaurant, culinary delights & dining spaces' },
     { key: 'foodDining', name: 'Food & Dining', icon: '🍽️', desc: 'Dining, buffets, BBQ & culinary delights' },
-    { key: 'pool', name: 'Pools & Resort Grounds', icon: '🏊', desc: 'Swimming pools & aquatic relaxation' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities & Sports', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
     { key: 'facilities', name: 'Facilities & Services', icon: '💆', desc: 'Lobby, reception, shops & services' },

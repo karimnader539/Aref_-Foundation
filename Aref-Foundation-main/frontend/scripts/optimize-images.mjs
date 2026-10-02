@@ -12,7 +12,8 @@ const targetDirs = [
     'Reciption',
     'Resturant',
     'Rooms',
-    'salon'
+    'salon',
+    'Swimming pool'
 ];
 
 const publicDir = path.resolve('public');
