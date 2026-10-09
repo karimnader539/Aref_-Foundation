@@ -36,9 +36,7 @@ const hotelData = {
                 '/royal-gallery-20.jpeg',
                 '/royal-gallery-21.jpeg',
                 '/royal-gallery-22.jpeg',
-                '/royal-gallery-23.jpeg',
-                '/royal-gallery-24.jpeg',
-                '/royal-gallery-25.jpeg'
+                '/royal-gallery-23.jpeg'
             ],
             beach: [],
             beachActivities: [],
@@ -78,9 +76,7 @@ const hotelData = {
             '/royal-gallery-20.jpeg',
             '/royal-gallery-21.jpeg',
             '/royal-gallery-22.jpeg',
-            '/royal-gallery-23.jpeg',
-            '/royal-gallery-24.jpeg',
-            '/royal-gallery-25.jpeg'
+            '/royal-gallery-23.jpeg'
         ]
     },
     'elphistone': {
