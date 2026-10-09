@@ -98,7 +98,6 @@ const hotelData = {
                 '/Rooms/DSC06223-HDR.jpeg',
                 '/Rooms/DSC06231-HDR.jpeg',
                 '/Rooms/DSC06241-HDR.jpeg',
-                '/Rooms/DSC06250.jpeg',
                 '/Rooms/IMG_3488.jpeg',
                 '/Rooms/IMG_3501.jpeg'
             ],
@@ -217,7 +216,6 @@ const hotelData = {
             '/Rooms/DSC06223-HDR.jpeg',
             '/Rooms/DSC06231-HDR.jpeg',
             '/Rooms/DSC06241-HDR.jpeg',
-            '/Rooms/DSC06250.jpeg',
             '/Rooms/IMG_3488.jpeg',
             '/Rooms/IMG_3501.jpeg',
             '/Resturant/613A9627.jpeg',
