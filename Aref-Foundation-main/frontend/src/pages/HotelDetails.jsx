@@ -143,9 +143,6 @@ const hotelData = {
             views: [
                 '/Views/DJI_0012.jpeg',
                 '/Views/DJI_0015.jpeg',
-                '/Views/DJI_0022.jpeg',
-                '/Views/DJI_0027.jpeg',
-                '/Views/DJI_0034.jpeg',
                 '/Views/DJI_0037.jpeg',
                 '/Views/DJI_0046.jpeg'
             ],
@@ -180,9 +177,6 @@ const hotelData = {
         gallery: [
             '/Views/DJI_0012.jpeg',
             '/Views/DJI_0015.jpeg',
-            '/Views/DJI_0022.jpeg',
-            '/Views/DJI_0027.jpeg',
-            '/Views/DJI_0034.jpeg',
             '/Views/DJI_0037.jpeg',
             '/Views/DJI_0046.jpeg',
             '/Swimming pool/613A6805.jpeg',
