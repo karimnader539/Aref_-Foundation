@@ -556,9 +556,51 @@ const HotelDetails = () => {
                 </div>
             </section>
 
+            {/* Categorized Gallery Section */}
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16 border-t border-brand-gold/10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-10 sm:mb-16">
+                        <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium block">Curated Photography</span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white mt-2 mb-4 tracking-tight">Categorized Gallery</h2>
+                        <div className="w-12 h-px bg-brand-gold/50 mx-auto my-4" />
+                    </div>
+
+                    {/* Render all active categories with responsive grid and lazy loading */}
+                    {activeCategories.map((cat) => (
+                        <div key={cat.key} className="mb-14 sm:mb-24">
+                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
+                                <div>
+                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">
+                                        CATEGORY {cat.categoryNumber}
+                                    </span>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">
+                                        {cat.name}
+                                    </h3>
+                                </div>
+                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">
+                                    {cat.items.length} Photos
+                                </span>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                {cat.items.map((src, index) => (
+                                    <GalleryCard
+                                        key={index}
+                                        src={src}
+                                        alt={`${data.name} ${cat.name} ${index + 1}`}
+                                        caption={`${cat.name} #${index + 1}`}
+                                        onClick={() => openLightbox(cat.items, index, cat.name)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* ELPHISTONE HOTEL AND SUITE APTS Section */}
             {data.extension && (
-                <section className="py-12 sm:py-20 md:py-24 px-4 sm:px-6 bg-zinc-950 border-b border-brand-gold/15 my-6 sm:my-8 relative overflow-hidden">
+                <section className="py-12 sm:py-20 md:py-24 px-4 sm:px-6 bg-zinc-950 border-t border-brand-gold/15 my-6 sm:my-8 relative overflow-hidden">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10">
                         {/* Left Side Content */}
                         <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6 items-start">
@@ -640,48 +682,6 @@ const HotelDetails = () => {
                     </div>
                 </section>
             )}
-
-            {/* Categorized Gallery Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16 border-t border-brand-gold/10">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-10 sm:mb-16">
-                        <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium block">Curated Photography</span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-brand-text dark:text-white mt-2 mb-4 tracking-tight">Categorized Gallery</h2>
-                        <div className="w-12 h-px bg-brand-gold/50 mx-auto my-4" />
-                    </div>
-
-                    {/* Render all active categories with responsive grid and lazy loading */}
-                    {activeCategories.map((cat) => (
-                        <div key={cat.key} className="mb-14 sm:mb-24">
-                            <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-brand-gold/20">
-                                <div>
-                                    <span className="text-brand-gold text-[10px] tracking-[0.25em] uppercase font-semibold block mb-1">
-                                        CATEGORY {cat.categoryNumber}
-                                    </span>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-brand-text dark:text-white">
-                                        {cat.name}
-                                    </h3>
-                                </div>
-                                <span className="text-xs text-brand-muted dark:text-zinc-400 font-mono tracking-widest">
-                                    {cat.items.length} Photos
-                                </span>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                {cat.items.map((src, index) => (
-                                    <GalleryCard
-                                        key={index}
-                                        src={src}
-                                        alt={`${data.name} ${cat.name} ${index + 1}`}
-                                        caption={`${cat.name} #${index + 1}`}
-                                        onClick={() => openLightbox(cat.items, index, cat.name)}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
 
             {/* Direct Contact & Reservations Section */}
             {data.contact && (
