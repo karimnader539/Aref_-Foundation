@@ -185,9 +185,7 @@ const hotelData = {
                 '/elphistone-gallery-26.jpg',
                 '/elphistone-gallery-47.jpg'
             ],
-            activities: [
-                '/elphistone-gallery-25.jpg'
-            ],
+            activities: [],
             facilities: [
                 '/elphistone-gallery-20.jpg',
                 '/elphistone-gallery-21.jpg',
@@ -267,7 +265,6 @@ const hotelData = {
             '/elphistone-gallery-20.jpg',
             '/elphistone-gallery-21.jpg',
             '/elphistone-gallery-22.jpg',
-            '/elphistone-gallery-25.jpg',
             '/elphistone-gallery-26.jpg',
             '/elphistone-gallery-47.jpg'
         ]
