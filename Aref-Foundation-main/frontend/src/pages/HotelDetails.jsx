@@ -134,8 +134,7 @@ const hotelData = {
                 '/Gym/613A7806.jpeg'
             ],
             salon: [
-                '/salon/613A7831.jpeg',
-                '/salon/613A7833.jpeg'
+                '/salon/613A7831.jpeg'
             ],
             pool: [
                 '/Swimming pool/613A6805.jpeg',
@@ -189,7 +188,6 @@ const hotelData = {
             '/Swimming pool/613A6805.jpeg',
             '/Swimming pool/613A6836.jpeg',
             '/salon/613A7831.jpeg',
-            '/salon/613A7833.jpeg',
             '/Rooms/DSC05868.jpeg',
             '/Rooms/DSC05872.jpeg',
             '/Rooms/DSC06170-HDR.jpeg',
