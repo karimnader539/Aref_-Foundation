@@ -150,10 +150,7 @@ const hotelData = {
                 '/Views/DJI_0037.jpeg',
                 '/Views/DJI_0046.jpeg'
             ],
-            lobby: [
-                '/Lobby/613A9818.jpeg',
-                '/Lobby/613A9828.jpeg'
-            ],
+            lobby: [],
             reception: [
                 '/Reciption/613A9812.jpeg',
                 '/Reciption/DSC05696.jpeg',
@@ -216,8 +213,6 @@ const hotelData = {
             '/Reciption/DSC05696.jpeg',
             '/Reciption/DSC05702.jpeg',
             '/Reciption/DSC05712.jpeg',
-            '/Lobby/613A9818.jpeg',
-            '/Lobby/613A9828.jpeg',
             '/Lobby/613A9840.jpeg',
             '/Lobby/DSC05914.jpeg',
             '/Lobby/DSC05932.jpeg',
