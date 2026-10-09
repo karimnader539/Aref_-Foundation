@@ -146,12 +146,12 @@ const hotelData = {
             ],
             pool: [
                 '/Swimming pool/613A6805.jpeg',
-                '/Swimming pool/613A6836.jpeg'
+                '/Swimming pool/613A6836.jpeg',
+                '/Views/DJI_0037.jpeg'
             ],
             views: [
                 '/Views/DJI_0012.jpeg',
                 '/Views/DJI_0015.jpeg',
-                '/Views/DJI_0037.jpeg',
                 '/Views/DJI_0046.jpeg'
             ],
             lobby: [],
