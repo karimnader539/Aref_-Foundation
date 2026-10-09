@@ -152,17 +152,17 @@ const hotelData = {
             ],
             lobby: [
                 '/Lobby/613A9818.jpeg',
-                '/Lobby/613A9828.jpeg',
-                '/Lobby/613A9840.jpeg',
-                '/Lobby/DSC05914.jpeg',
-                '/Lobby/DSC05932.jpeg',
-                '/Lobby/DSC05981.jpeg'
+                '/Lobby/613A9828.jpeg'
             ],
             reception: [
                 '/Reciption/613A9812.jpeg',
                 '/Reciption/DSC05696.jpeg',
                 '/Reciption/DSC05702.jpeg',
-                '/Reciption/DSC05712.jpeg'
+                '/Reciption/DSC05712.jpeg',
+                '/Lobby/613A9840.jpeg',
+                '/Lobby/DSC05914.jpeg',
+                '/Lobby/DSC05932.jpeg',
+                '/Lobby/DSC05981.jpeg'
             ],
             restaurants: [
                 '/Resturant/613A9627.jpeg',
