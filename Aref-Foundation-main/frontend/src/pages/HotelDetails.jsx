@@ -160,8 +160,6 @@ const hotelData = {
             ],
             reception: [
                 '/Reciption/613A9812.jpeg',
-                '/Reciption/613A9814.jpeg',
-                '/Reciption/613A9819-HDR.jpeg',
                 '/Reciption/DSC05691.jpeg',
                 '/Reciption/DSC05696.jpeg',
                 '/Reciption/DSC05701.jpeg',
@@ -217,8 +215,6 @@ const hotelData = {
             '/Resturant/DSC05584-HDR.jpeg',
             '/Resturant/DSC05590-HDR.jpeg',
             '/Reciption/613A9812.jpeg',
-            '/Reciption/613A9814.jpeg',
-            '/Reciption/613A9819-HDR.jpeg',
             '/Reciption/DSC05691.jpeg',
             '/Reciption/DSC05696.jpeg',
             '/Reciption/DSC05701.jpeg',
