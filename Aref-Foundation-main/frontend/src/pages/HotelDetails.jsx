@@ -134,7 +134,12 @@ const hotelData = {
                 '/Gym/613A7806.jpeg'
             ],
             salon: [
-                '/salon/613A7831.jpeg'
+                '/salon/613A7310.JPG',
+                '/salon/613A7359.JPG',
+                '/salon/613A7831.jpeg',
+                '/salon/DSC06926.JPG',
+                '/salon/DSC06998.JPG',
+                '/salon/DSC07134.JPG'
             ],
             pool: [
                 '/Swimming pool/613A6805.jpeg',
@@ -181,7 +186,12 @@ const hotelData = {
             '/Views/DJI_0046.jpeg',
             '/Swimming pool/613A6805.jpeg',
             '/Swimming pool/613A6836.jpeg',
+            '/salon/613A7310.JPG',
+            '/salon/613A7359.JPG',
             '/salon/613A7831.jpeg',
+            '/salon/DSC06926.JPG',
+            '/salon/DSC06998.JPG',
+            '/salon/DSC07134.JPG',
             '/Rooms/DSC05868.jpeg',
             '/Rooms/DSC05872.jpeg',
             '/Rooms/DSC06170-HDR.jpeg',
