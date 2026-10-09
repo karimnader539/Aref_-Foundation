@@ -180,11 +180,7 @@ const hotelData = {
                 '/Resturant/DSC05584-HDR.jpeg',
                 '/Resturant/DSC05590-HDR.jpeg'
             ],
-            hotelExterior: [
-                '/elphistone-gallery-6.jpg',
-                '/elphistone-gallery-26.jpg',
-                '/elphistone-gallery-47.jpg'
-            ],
+            hotelExterior: [],
             activities: [],
             facilities: [],
             other: []
@@ -256,10 +252,7 @@ const hotelData = {
             '/Beach/DSC06461.jpeg',
             '/Beach/DSC06463 (1).jpeg',
             '/Beach/DSC06483.jpeg',
-            '/Beach/DSC06486.jpeg',
-            '/elphistone-gallery-6.jpg',
-            '/elphistone-gallery-26.jpg',
-            '/elphistone-gallery-47.jpg'
+            '/Beach/DSC06486.jpeg'
         ]
     }
 };
