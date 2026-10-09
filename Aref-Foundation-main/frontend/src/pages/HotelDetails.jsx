@@ -319,8 +319,31 @@ const GalleryCard = ({ src, alt, caption, onClick }) => {
     );
 };
 
-// Interactive Lightbox Modal
+// Interactive Lightbox Modal with progressive loader, async decode, error handling & preloading
 const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+    const touchStartX = React.useRef(null);
+
+    // Reset load state when switching images
+    useEffect(() => {
+        setLoaded(false);
+        setError(false);
+    }, [currentIndex]);
+
+    // Preload next and previous images in background for instantaneous navigation
+    useEffect(() => {
+        if (!images || images.length <= 1) return;
+        const nextIdx = (currentIndex + 1) % images.length;
+        const prevIdx = (currentIndex - 1 + images.length) % images.length;
+        [images[nextIdx]?.src, images[prevIdx]?.src].forEach((src) => {
+            if (src) {
+                const img = new Image();
+                img.src = src;
+            }
+        });
+    }, [currentIndex, images]);
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') onClose();
@@ -341,10 +364,30 @@ const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
 
     const currentItem = images[currentIndex];
 
+    // Touch swipe handlers for mobile
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e) => {
+        if (touchStartX.current === null) return;
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                onNavigate(1);
+            } else {
+                onNavigate(-1);
+            }
+        }
+        touchStartX.current = null;
+    };
+
     return (
         <div
             className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8 select-none animate-fadeIn"
             onClick={onClose}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
         >
             {/* Top Bar */}
             <div
@@ -356,7 +399,7 @@ const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
                 </span>
                 <button
                     onClick={onClose}
-                    className="w-10 h-10 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-colors text-lg"
+                    className="w-10 h-10 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-colors text-lg cursor-pointer"
                     aria-label="Close"
                 >
                     ✕
@@ -370,7 +413,7 @@ const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
                         e.stopPropagation();
                         onNavigate(-1);
                     }}
-                    className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl"
+                    className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl cursor-pointer shadow-lg"
                     aria-label="Previous image"
                 >
                     ‹
@@ -384,23 +427,43 @@ const LightboxModal = ({ images, currentIndex, onClose, onNavigate }) => {
                         e.stopPropagation();
                         onNavigate(1);
                     }}
-                    className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl"
+                    className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-zinc-900/80 border border-brand-gold/40 text-white hover:text-brand-gold hover:border-brand-gold flex items-center justify-center transition-all z-50 text-2xl cursor-pointer shadow-lg"
                     aria-label="Next image"
                 >
                     ›
                 </button>
             )}
 
-            {/* Main Image */}
+            {/* Main Image Container */}
             <div
-                className="max-w-6xl max-h-[82vh] flex items-center justify-center relative my-auto"
+                className="max-w-6xl max-h-[82vh] w-full flex items-center justify-center relative my-auto min-h-[260px]"
                 onClick={(e) => e.stopPropagation()}
             >
-                <img
-                    src={currentItem.src}
-                    alt={currentItem.alt || 'Gallery photo'}
-                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
-                />
+                {/* Lightweight Loading Skeleton / Spinner */}
+                {!loaded && !error && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full border-2 border-brand-gold/30 border-t-brand-gold animate-spin" />
+                    </div>
+                )}
+
+                {/* Error Fallback */}
+                {error ? (
+                    <div className="p-8 rounded-xl bg-zinc-900 border border-white/10 text-center text-zinc-400">
+                        <p className="text-sm">Unable to display photo</p>
+                    </div>
+                ) : (
+                    <img
+                        key={currentItem.src}
+                        src={currentItem.src}
+                        alt={currentItem.alt || 'Gallery photo'}
+                        decoding="async"
+                        onLoad={() => setLoaded(true)}
+                        onError={() => setError(true)}
+                        className={`max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10 transition-opacity duration-300 ${
+                            loaded ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    />
+                )}
             </div>
 
             {/* Caption */}
