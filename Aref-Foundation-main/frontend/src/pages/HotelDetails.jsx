@@ -32,7 +32,6 @@ const hotelData = {
                 '/royal-gallery-19.jpeg',
                 '/royal-gallery-20.jpeg',
                 '/royal-gallery-21.jpeg',
-                '/royal-gallery-22.jpeg',
                 '/royal-gallery-23.jpeg'
             ],
             beach: [],
@@ -69,7 +68,6 @@ const hotelData = {
             '/royal-gallery-19.jpeg',
             '/royal-gallery-20.jpeg',
             '/royal-gallery-21.jpeg',
-            '/royal-gallery-22.jpeg',
             '/royal-gallery-23.jpeg'
         ]
     },
