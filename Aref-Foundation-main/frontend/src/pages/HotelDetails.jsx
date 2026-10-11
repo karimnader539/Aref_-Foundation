@@ -44,6 +44,7 @@ const hotelData = {
             lobby: [],
             reception: [],
             restaurants: [],
+            nightParty: [],
             hotelExterior: [],
             activities: [],
             facilities: [],
@@ -183,6 +184,11 @@ const hotelData = {
                 '/Resturant/WhatsApp Image 2026-10-11 at 11.29.33 PM.jpeg',
                 '/Resturant/WhatsApp Image 2026-10-11 at 11.29.35 PM.jpeg'
             ],
+            nightParty: [
+                '/Night party/DSC06421.JPG',
+                '/Night party/DSC06436.JPG',
+                '/Night party/DSC06447.JPG'
+            ],
             hotelExterior: [],
             activities: [],
             facilities: [],
@@ -229,6 +235,9 @@ const hotelData = {
             '/Resturant/WhatsApp Image 2026-10-11 at 11.29.33 PM (1).jpeg',
             '/Resturant/WhatsApp Image 2026-10-11 at 11.29.33 PM.jpeg',
             '/Resturant/WhatsApp Image 2026-10-11 at 11.29.35 PM.jpeg',
+            '/Night party/DSC06421.JPG',
+            '/Night party/DSC06436.JPG',
+            '/Night party/DSC06447.JPG',
             '/Reciption/613A9812.jpeg',
             '/Reciption/DSC05696.jpeg',
             '/Reciption/DSC05702.jpeg',
@@ -277,6 +286,7 @@ const CATEGORY_ORDER = [
     { key: 'lobby', name: 'Lobby & Reception', icon: '🏛️', desc: 'Grand lobby, lounge areas & reception' },
     { key: 'reception', name: 'Reception & Front Desk', icon: '🛎️', desc: 'Front desk, check-in & guest hospitality' },
     { key: 'restaurants', name: 'Restaurants', icon: '🍴', desc: 'Main restaurant, culinary delights & dining spaces' },
+    { key: 'nightParty', name: 'Night Party', icon: '🎉', desc: 'Evening entertainment, parties & nightlife' },
     { key: 'hotelExterior', name: 'Hotel & Exterior', icon: '🏢', desc: 'Resort architecture, grounds & views' },
     { key: 'activities', name: 'Activities & Sports', icon: '🚴', desc: 'Sports, tennis courts & entertainment' },
     { key: 'facilities', name: 'Facilities & Services', icon: '💆', desc: 'Lobby, reception, shops & services' },
