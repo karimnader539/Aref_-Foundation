@@ -363,9 +363,11 @@ const GalleryCard = ({ src, alt, caption, onClick }) => {
                 }`}
             />
 
-            {/* Hover Caption Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span className="text-brand-gold text-xs font-serif tracking-wide">{caption}</span>
+            {/* Hover Caption (non-darkening badge) */}
+            <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-brand-gold text-xs font-serif tracking-wide px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-brand-gold/30 shadow-md">
+                    {caption}
+                </span>
             </div>
         </div>
     );

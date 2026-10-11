@@ -19,7 +19,7 @@ const Hotels = () => {
                 {/* Card 1 Featured */}
                 <Link to="/hotels/royal" className="col-span-1 md:col-span-2 lg:col-span-3 group cursor-pointer card-hover-effect flex flex-col p-3 sm:p-4 bg-surface-dim dark:bg-zinc-900/90 border border-zinc-200/60 dark:border-zinc-800 rounded-xl block">
                     <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[21/9] mb-stack-md bg-surface-container-highest dark:bg-zinc-800 rounded-lg">
-                        <img alt="Royal Residence" className="w-full h-full object-cover image-zoom opacity-80 group-hover:opacity-100 transition-opacity duration-700" src="/royal-hotel.jpg" />
+                        <img alt="Royal Residence" className="w-full h-full object-cover image-zoom opacity-100 transition-transform duration-700" src="/royal-hotel.jpg" />
                         <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3 py-1 font-label-caps text-[10px] sm:text-label-caps text-primary dark:text-brand-gold border border-primary/30 dark:border-brand-gold/40 rounded-sm">
                             PLATINUM COLLECTION
                         </div>
@@ -41,7 +41,7 @@ const Hotels = () => {
                 {/* Card 2 Featured */}
                 <Link to="/hotels/elphistone" className="col-span-1 md:col-span-2 lg:col-span-3 group cursor-pointer card-hover-effect flex flex-col p-3 sm:p-4 bg-surface-dim dark:bg-zinc-900/90 border border-zinc-200/60 dark:border-zinc-800 rounded-xl block">
                     <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[21/9] mb-stack-md bg-surface-container-highest dark:bg-zinc-800 rounded-lg">
-                        <img alt="Elphistone Hotel" className="w-full h-full object-cover image-zoom opacity-80 group-hover:opacity-100 transition-opacity duration-700" src="/elphistone.jpg" />
+                        <img alt="Elphistone Hotel" className="w-full h-full object-cover image-zoom opacity-100 transition-transform duration-700" src="/elphistone.jpg" />
                         <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3 py-1 font-label-caps text-[10px] sm:text-label-caps text-primary dark:text-brand-gold border border-primary/30 dark:border-brand-gold/40 rounded-sm">
                             GOLDEN ESCAPE
                         </div>

@@ -117,9 +117,9 @@ const Restaurants = () => {
             <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[21/9] mb-3 bg-surface-container-highest dark:bg-zinc-800 rounded-lg">
               <img
                 alt={est.name}
-                className={`w-full h-full object-cover image-zoom transition-opacity duration-700 ${est.isComingSoon
+                className={`w-full h-full object-cover image-zoom transition-transform duration-700 ${est.isComingSoon
                   ? 'opacity-50 group-hover:opacity-75 filter grayscale-[50%]'
-                  : 'opacity-80 group-hover:opacity-100'
+                  : 'opacity-100'
                   }`}
                 src={est.image}
               />
