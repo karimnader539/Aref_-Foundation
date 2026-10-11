@@ -185,7 +185,6 @@ const hotelData = {
                 '/Resturant/WhatsApp Image 2026-10-11 at 11.29.35 PM.jpeg',
                 '/Resturant/613A6868.JPG',
                 '/Resturant/613A6899.JPG',
-                '/Resturant/613A6904.JPG',
                 '/Resturant/613A6931.JPG',
                 '/Resturant/613A6997.JPG',
                 '/Resturant/613A7125.JPG',
@@ -196,7 +195,6 @@ const hotelData = {
                 '/Resturant/DSC06345.JPG',
                 '/Resturant/DSC06359.JPG',
                 '/Resturant/DSC06402.JPG',
-                '/Resturant/DSC06741.JPG',
                 '/Resturant/DSC06803.JPG'
             ],
             nightParty: [
@@ -252,7 +250,6 @@ const hotelData = {
             '/Resturant/WhatsApp Image 2026-10-11 at 11.29.35 PM.jpeg',
             '/Resturant/613A6868.JPG',
             '/Resturant/613A6899.JPG',
-            '/Resturant/613A6904.JPG',
             '/Resturant/613A6931.JPG',
             '/Resturant/613A6997.JPG',
             '/Resturant/613A7125.JPG',
@@ -263,7 +260,6 @@ const hotelData = {
             '/Resturant/DSC06345.JPG',
             '/Resturant/DSC06359.JPG',
             '/Resturant/DSC06402.JPG',
-            '/Resturant/DSC06741.JPG',
             '/Resturant/DSC06803.JPG',
             '/Night party/DSC06421.JPG',
             '/Night party/DSC06436.JPG',
