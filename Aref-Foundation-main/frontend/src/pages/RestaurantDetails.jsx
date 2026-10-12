@@ -150,7 +150,6 @@ const restaurantData = {
             '/koupa-gallery-12.jpg',
             '/koupa-gallery-13.jpg',
             '/koupa-gallery-14.jpg',
-            '/koupa-gallery-15.jpg',
             '/koupa-gallery-16.jpg',
             '/koupa-gallery-17.jpg',
             '/koupa-gallery-18.jpg',
