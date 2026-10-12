@@ -87,7 +87,6 @@ const restaurantData = {
             '/estro-gallery-9.jpg',
             '/estro-gallery-10.jpg',
             '/estro-gallery-11.jpg',
-            '/estro-gallery-12.jpg',
             '/estro-gallery-13.jpg',
             '/estro-gallery-14.jpg'
         ]
