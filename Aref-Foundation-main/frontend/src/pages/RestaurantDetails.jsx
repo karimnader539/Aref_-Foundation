@@ -26,6 +26,13 @@ const restaurantData = {
         conceptTitle: 'An elevated Nile-side dining destination serving Egyptian favourites, Mediterranean dishes, seafood, sushi and international classics from breakfast through dinner.',
         locationUrl: 'https://maps.app.goo.gl/igtJpqXQ4HhkQZFh9',
         gallery: [
+            '/2J1A3578.jpg',
+            '/2J1A3589.jpg',
+            '/2J1A3598.jpg',
+            '/2J1A3607.jpg',
+            '/2J1A3618.jpg',
+            '/2J1A3709.jpg',
+            '/2J1A3726.jpg',
             '/tenaya-12.jpg',
             '/tenaya-13.jpg',
             '/tenaya-14.jpg',
