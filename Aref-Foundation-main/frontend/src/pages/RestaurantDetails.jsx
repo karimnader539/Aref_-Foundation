@@ -107,8 +107,6 @@ const restaurantData = {
             '/frank-co-gallery-6.jpg',
             '/frank-co-gallery-7.jpg',
             '/frank-co-gallery-8.jpg',
-            '/frank-co-gallery-9.jpg',
-            '/frank-co-gallery-10.jpg',
             '/frank-co-gallery-11.jpg',
             '/frank-co-gallery-12.jpg',
             '/frank-co-gallery-13.jpg',
