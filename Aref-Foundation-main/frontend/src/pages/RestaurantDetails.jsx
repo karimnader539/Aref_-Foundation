@@ -137,14 +137,10 @@ const restaurantData = {
         conceptTitle: 'A casual wellness-minded spot for fresh fruit juices, smoothies, coffee and healthy snacks—made for quick pick-me-ups and easy everyday stops.',
         locationUrl: 'https://maps.app.goo.gl/B2pTGpa36cz2xwQq5',
         gallery: [
-            '/koupa-gallery-1.jpg',
-            '/koupa-gallery-2.jpg',
             '/koupa-gallery-3.jpg',
-            '/koupa-gallery-4.jpg',
             '/koupa-gallery-5.jpg',
             '/koupa-gallery-6.jpg',
             '/koupa-gallery-7.jpg',
-            '/koupa-gallery-8.jpg',
             '/koupa-gallery-9.jpg',
             '/koupa-gallery-10.jpg',
             '/koupa-gallery-11.jpg',
@@ -158,8 +154,7 @@ const restaurantData = {
             '/koupa-gallery-20.jpg',
             '/koupa-gallery-21.jpg',
             '/koupa-gallery-22.jpg',
-            '/koupa-gallery-23.jpg',
-            '/koupa-gallery-24.jpg'
+            '/koupa-gallery-23.jpg'
         ]
     },
     'tawlet-yvonne': {
