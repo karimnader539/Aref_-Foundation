@@ -176,7 +176,6 @@ const restaurantData = {
             '/tawlet-yvonne-gallery-12.jpg',
             '/tawlet-yvonne-gallery-14.jpg',
             '/tawlet-yvonne-gallery-16.jpg',
-            '/tawlet-yvonne-gallery-17.jpg',
             '/tawlet-yvonne-gallery-18.jpg',
             '/tawlet-yvonne-gallery-19.jpg'
         ]
