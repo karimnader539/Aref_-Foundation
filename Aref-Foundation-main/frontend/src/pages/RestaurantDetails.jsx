@@ -264,7 +264,6 @@ const restaurantData = {
             '/caribou-gallery-1.jpg',
             '/caribou-gallery-2.jpg',
             '/caribou-gallery-3.jpg',
-            '/caribou-gallery-4.jpg',
             '/caribou-gallery-5.jpg',
             '/caribou-gallery-6.jpg',
             '/caribou-gallery-7.jpg',
