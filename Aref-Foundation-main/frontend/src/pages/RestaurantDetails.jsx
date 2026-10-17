@@ -117,7 +117,8 @@ const restaurantData = {
     'ceryle': {
         name: 'CERYLE BY CAIRO JAZZ',
         tagline: 'Riverside Elegance & Modern Gastronomy',
-        heroImage: '/ceryle.jpg',
+        heroImage: '/eaa69011-d551-45f9-aa6b-89b7d1c6a51f.png',
+        isComingSoon: true,
         description: 'A stunning riverside sanctuary blending modern architectural elegance with panoramic water views and chef-curated international cuisine.',
         conceptTitle: 'A contemporary high-end resto bar on the Nile, pairing refined dining and drinks with live music, entertainment and a sophisticated late-night atmosphere.',
         locationUrl: 'https://maps.app.goo.gl/iChGZZRc8K6yaDmm6?g_st=ic',

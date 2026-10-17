@@ -68,8 +68,9 @@ const establishments = [
   {
     name: 'CERYLE BY CAIRO JAZZ',
     tagline: 'Riverside Fine Dining',
-    image: '/ceryle.jpg',
+    image: '/eaa69011-d551-45f9-aa6b-89b7d1c6a51f.png',
     link: '/restaurants/ceryle',
+    isComingSoon: true,
     description: 'A stunning riverside sanctuary blending modern architectural elegance with panoramic water views.'
   },
   {
