@@ -58,7 +58,7 @@ const restaurantsData = [
   },
   {
     id: 'ceryle',
-    name: 'CERYLE',
+    name: 'CERYLE BY CAIRO JAZZ',
     image: '/ceryle.jpg',
     description: 'A contemporary high-end resto bar on the Nile, pairing refined dining and drinks with live music, entertainment and a sophisticated late-night atmosphere.'
   },

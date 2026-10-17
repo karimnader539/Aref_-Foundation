@@ -115,19 +115,13 @@ const restaurantData = {
         ]
     },
     'ceryle': {
-        name: 'CERYLE',
+        name: 'CERYLE BY CAIRO JAZZ',
         tagline: 'Riverside Elegance & Modern Gastronomy',
         heroImage: '/ceryle.jpg',
         description: 'A stunning riverside sanctuary blending modern architectural elegance with panoramic water views and chef-curated international cuisine.',
         conceptTitle: 'A contemporary high-end resto bar on the Nile, pairing refined dining and drinks with live music, entertainment and a sophisticated late-night atmosphere.',
         locationUrl: 'https://maps.app.goo.gl/iChGZZRc8K6yaDmm6?g_st=ic',
-        gallery: [
-            '/ceryle-gallery-1.jpg',
-            '/ceryle-gallery-2.jpg',
-            '/ceryle-gallery-3.jpg',
-            '/ceryle-gallery-4.jpg',
-            '/ceryle-gallery-5.jpg'
-        ]
+        gallery: []
     },
     'koupa': {
         name: 'KOUPA',
@@ -368,24 +362,26 @@ const RestaurantDetails = () => {
             </section>
 
             {/* Gallery/Atmosphere Section */}
-            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 items-center">
-                    {data.gallery.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`relative group overflow-hidden rounded-xl [content-visibility:auto] [contain-intrinsic-size:1px_600px] ${index % 2 !== 0 ? 'md:mt-24' : ''}`}
-                        >
-                            <img
-                                alt={`${data.name} Atmosphere ${index + 1}`}
-                                className="w-full h-[300px] sm:h-[400px] md:h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu rounded-xl"
-                                src={typeof item === 'string' ? item : item.src}
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {data.gallery && data.gallery.length > 0 && (
+                <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-brand-dark dark:bg-[#0b0c0d] mb-12 sm:mb-16">
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 items-center">
+                        {data.gallery.map((item, index) => (
+                            <div
+                                key={index}
+                                className={`relative group overflow-hidden rounded-xl [content-visibility:auto] [contain-intrinsic-size:1px_600px] ${index % 2 !== 0 ? 'md:mt-24' : ''}`}
+                            >
+                                <img
+                                    alt={`${data.name} Atmosphere ${index + 1}`}
+                                    className="w-full h-[300px] sm:h-[400px] md:h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu rounded-xl"
+                                    src={typeof item === 'string' ? item : item.src}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
         </div>
     )
 }

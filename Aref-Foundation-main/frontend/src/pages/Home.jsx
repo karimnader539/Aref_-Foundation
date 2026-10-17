@@ -66,7 +66,7 @@ const establishments = [
     description: 'A lively neighborhood sanctuary serving chef-driven comfort foods, craft mixology, and garden vibes.'
   },
   {
-    name: 'CERYLE',
+    name: 'CERYLE BY CAIRO JAZZ',
     tagline: 'Riverside Fine Dining',
     image: '/ceryle.jpg',
     link: '/restaurants/ceryle',
